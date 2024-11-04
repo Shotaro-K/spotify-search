@@ -7,9 +7,9 @@ name = "pypi"
 start = "python main.py"
 
 [packages]
+fastapi = "*"
 
 [dev-packages]
-fastapi = "*"
 uvicorn = "*"
 
 [requires]

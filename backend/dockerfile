@@ -10,17 +10,11 @@ WORKDIR /app
 # -------for development-------
 FROM base AS dev
 
-# Install dependencies
-RUN pipenv install --dev
-
 # Run server
 CMD ["pipenv", "run", "start"]
 
 # -------for production-------
 FROM base AS prod
-
-# Install dependencies
-RUN pipenv install --deploy --system
 
 # Run server
 CMD ["pipenv", "run", "start"]
