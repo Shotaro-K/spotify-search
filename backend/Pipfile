@@ -7,10 +7,9 @@ name = "pypi"
 start = "python main.py"
 
 [packages]
-fastapi = "*"
+fastapi = {extras = ["all"], version = "*"}
 
 [dev-packages]
-uvicorn = "*"
 
 [requires]
 python_version = "3.13"

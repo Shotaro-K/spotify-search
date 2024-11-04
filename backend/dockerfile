@@ -10,11 +10,17 @@ WORKDIR /app
 # -------for development-------
 FROM base AS dev
 
+# Install dependencies
+RUN pipenv install --dev --system
+
 # Run server
-CMD ["pipenv", "run", "start"]
+CMD ["python", "main.py"]
 
 # -------for production-------
 FROM base AS prod
 
+# Install dependencies
+RUN pipenv install --system
+
 # Run server
-CMD ["pipenv", "run", "start"]
+CMD ["python", "main.py"]
