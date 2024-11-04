@@ -11,14 +11,16 @@ WORKDIR /app
 FROM base AS dev
 
 # Install dependencies including devDependencies
-RUN npm ci
+RUN yarn install --immutable --immutable-cache --check-cache
 
-CMD ["npm", "run", "dev"]
+# Start the development server
+CMD ["yarn", "dev"]
 
 # --------for production--------
 FROM base AS prod
 
 # Install dependencies excluding devDependencies
-RUN npm ci --only=production
+RUN yarn install --immutable --immutable-cache --check-cache --mode production
 
-CMD ["npm", "run", "start"]
+# Start the production server
+CMD ["yarn", "start"]
