@@ -11,7 +11,7 @@ WORKDIR /app
 FROM base AS dev
 
 # Install dependencies including devDependencies
-RUN yarn install --immutable --immutable-cache --check-cache
+RUN yarn install
 
 # Start the development server
 CMD ["yarn", "dev"]
@@ -20,7 +20,7 @@ CMD ["yarn", "dev"]
 FROM base AS prod
 
 # Install dependencies excluding devDependencies
-RUN yarn install --immutable --immutable-cache --check-cache --mode production
+RUN yarn install --production
 
 # Start the production server
 CMD ["yarn", "start"]
