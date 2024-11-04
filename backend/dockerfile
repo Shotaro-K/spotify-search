@@ -1,10 +1,20 @@
-FROM python:3.13-bullseye
+FROM python:3.13-bullseye AS base
 
-# Copy source code
+# Update pip and install pipenv
+RUN pip3 install --upgrade pip
+RUN pip3 install pipenv
+
 COPY . /app
+WORKDIR /app
+
+# -------for development-------
+FROM base AS dev
 
 # Install dependencies
-RUN pip3 install -r /app/requirements.txt
+RUN pipenv install --dev
 
-# Set the working directory
-WORKDIR /app
+# -------for production-------
+FROM base AS prod
+
+# Install dependencies
+RUN pipenv install --deploy --system
