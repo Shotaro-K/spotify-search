@@ -13,8 +13,12 @@ FROM base AS dev
 # Install dependencies including devDependencies
 RUN npm ci
 
+CMD ["npm", "run", "dev"]
+
 # --------for production--------
 FROM base AS prod
 
 # Install dependencies excluding devDependencies
 RUN npm ci --only=production
+
+CMD ["npm", "run", "start"]
