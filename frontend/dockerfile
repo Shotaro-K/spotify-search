@@ -1,0 +1,10 @@
+FROM node:22-bullseye
+
+# Install dependencies
+RUN npm install
+
+# Copy source code
+COPY . /app
+
+# Set the working directory
+WORKDIR /app
